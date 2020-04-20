@@ -1,17 +1,13 @@
 <template>
   <div class='home'>
     <h3>{{ msg }}</h3>
-    <List/>
+    <p>vue-todo-app</p>
   </div>
 </template>
 
 <script>
-import List from '@/components/List'
 
 export default {
-  components: {
-    List
-  },
   name: 'Home',
   data () {
     return {

@@ -14,6 +14,7 @@ export default {
     return {
       links: [
         { to: '/', name: 'Home' },
+        { to: '/list', name: 'List' },
         { to: '/about', name: 'About' }
       ]
     }
