@@ -15,8 +15,7 @@
             :to="{
               name: 'person',
               params: {
-                id: p.id.toString(),
-                name: p.name
+                key: p['.key']
               }
             }">{{p.name}}</router-link>
         </div>
@@ -27,36 +26,19 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import firebase from 'firebase'
-import VueFirestore from 'vue-firestore'
-require('firebase/firestore')
-
-Vue.use(VueFirestore)
-const db = firebase.initializeApp({
-  apiKey: 'AIzaSyBHWTQ4TEph5O533Y_0HS2rlrepV6bSmm4',
-  authDomain: 'todo-app-c43a7.firebaseapp.com',
-  databaseURL: 'https://todo-app-c43a7.firebaseio.com',
-  projectId: 'todo-app-c43a7',
-  storageBucket: 'todo-app-c43a7.appspot.com',
-  messagingSenderId: '878779951806',
-  appId: '1:878779951806:web:66f2c8b8f5598a90'
-}).firestore()
-Vue.use(db)
 
 export default {
   name: 'List',
   firestore () {
     return {
-      persons: db.collection('persons')
+      persons: this.$db.collection('persons')
     }
   },
   data () {
     return {
       msg: 'List Names',
       person: {
-        name: '',
-        id: Date.now()
+        name: ''
       }
     }
   },
@@ -64,7 +46,6 @@ export default {
     add () {
       this.$firestore.persons.add(this.person).then(() => {
         this.person.name = ''
-        this.person.id = Date.now()
       })
     },
     remove (e) {

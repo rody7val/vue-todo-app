@@ -8,6 +8,7 @@ import Person from '@/components/Person'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/about',
@@ -25,7 +26,7 @@ export default new Router({
       component: List
     },
     {
-      path: '/p/:id/:name',
+      path: '/p/:key',
       name: 'person',
       component: Person
     }

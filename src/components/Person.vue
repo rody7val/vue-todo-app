@@ -1,18 +1,16 @@
 <template>
-  <div class='lisIdt'>
-    <h3>{{ name }}</h3>
-    <p>{{ id }}</p>
+  <div class='lisId'>
+    <h3>{{ person.name }}</h3>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'personId',
-  data () {
+  name: 'person',
+  firestore () {
     return {
-      id: this.$route.params.id,
-      name: this.$route.params.name
+      person: this.$db.collection('persons').doc(this.$route.params.key)
     }
   }
 }
