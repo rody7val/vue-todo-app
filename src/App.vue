@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <h1>My App</h1>
+  <div id='app'>
+    <Auth/>
     <Nav/>
     <router-view/>
   </div>
@@ -8,10 +8,12 @@
 
 <script>
 import Nav from '@/components/Nav'
+import Auth from '@/components/Auth'
 
 export default {
   components: {
-    Nav
+    Nav,
+    Auth
   },
   name: 'App'
 }
@@ -22,8 +24,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 15px;
 }
 </style>

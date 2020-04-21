@@ -36,7 +36,7 @@ export default {
   },
   data () {
     return {
-      msg: 'List Names',
+      msg: 'List',
       person: {
         name: ''
       }
@@ -58,7 +58,6 @@ export default {
 <style scoped>
 ul{
   width: 300px;
-  margin: 0 auto!important;
   list-style-type: none;
   margin: 0;
   padding: 3px;

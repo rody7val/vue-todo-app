@@ -1,5 +1,6 @@
 <template>
-    <div id='nav'>
+    <div id='nav' class='box'>
+      <img id='logo' src='@/assets/logo.png'/>
       <router-link
         v-for='(link, index) in links'
         :key="index"
@@ -23,6 +24,17 @@ export default {
 </script>
 
 <style scoped>
+#logo {
+  width: 40px
+}
+.box {
+  display: flex;
+  align-items:center;
+}
+#nav {
+  font-size: 14px;
+  font-weight: 300
+}
 #nav a::after {
   content: " | ";
   color: #000;

@@ -1,9 +1,7 @@
 <template>
   <div class='about'>
     <h3>{{ msg }}</h3>
-    <a target="_blank"
-      href="https://github.com/rody7val/vue-todo-app"
-      rel="noreferrer noopener">Github</a>
+    <p>Repositorio en <a target="_blank" href="https://github.com/rody7val/vue-todo-app" rel="noreferrer noopener">Github</a>.</p>
   </div>
 </template>
 

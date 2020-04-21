@@ -1,7 +1,7 @@
 <template>
   <div class='home'>
     <h3>{{ msg }}</h3>
-    <p>vue-todo-app</p>
+    <p>Aplicación de ejemplo creada con <a target="_blank" rel="noreferrer noopener" href="https://cli.vuejs.org/">vue-cli</a>.</p>
   </div>
 </template>
 
