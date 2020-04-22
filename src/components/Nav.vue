@@ -1,10 +1,11 @@
 <template>
     <div id='nav' class='box'>
-      <img id='logo' src='@/assets/logo.png'/>
-      <router-link
-        v-for='(link, index) in links'
+      <router-link v-for='(link, index) in nav'
         :key="index"
         :to='link.to'>{{link.name}}</router-link>
+      <router-link v-for='(link, index) in navAdmin' v-if="$user"
+        :key="index"
+        :to='link.to'>*{{link.name}}</router-link>
     </div>
 </template>
 
@@ -13,9 +14,12 @@ export default {
   name: 'Nav',
   data () {
     return {
-      links: [
+      navAdmin: [
+        { to: '/list', name: 'Persons' },
+        { to: '/users', name: 'Users' }
+      ],
+      nav: [
         { to: '/', name: 'Home' },
-        { to: '/list', name: 'List' },
         { to: '/about', name: 'About' }
       ]
     }
@@ -32,7 +36,7 @@ export default {
   align-items:center;
 }
 #nav {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300
 }
 #nav a::after {

@@ -1,6 +1,14 @@
 <template>
   <div class='lisId'>
     <h3>{{ person.name }}</h3>
+    <small>
+      <p class="box">creado por <span><img :src="user[0].img"></span> <router-link :to="{
+        name: 'user',
+        params: {
+          key: user[0]['.key']
+        }
+      }">{{ user[0].name }}</router-link></p>
+    </small>
   </div>
 </template>
 
@@ -9,11 +17,21 @@ export default {
   name: 'person',
   firestore () {
     return {
-      person: this.$db.collection('persons').doc(this.$route.params.key)
+      person: this.$db.collection('persons').doc(this.$route.params.key),
+      user: this.$db.collection('users').where('uid', '==', this.$route.params.uid)
     }
   }
 }
 </script>
 
 <style scoped>
+.box {
+  display: flex;
+  align-items:center;
+}
+span img{
+  width: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div class='auth'>
     <div id='signIn' v-if='$user'>
-      <div>
-        <img :src='$user.photoURL' :alt='$user.displayName'>
-      </div>
+      <img :src='$user.photoURL' :alt='$user.displayName'>
       <b>{{$user.displayName}}</b>
       <i>{{$user.email}}</i>
       <button @click="signOut">Salir</button>
@@ -25,7 +23,7 @@ export default {
     signIn () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then(result => {
-        alert('signIn!', result)
+        console.log('signIn!', result)
         this.$router.replace('/list')
       }).catch(error => {
         alert(error)
@@ -33,7 +31,7 @@ export default {
     },
     signOut () {
       firebase.auth().signOut().then(result => {
-        alert('signOut!', result)
+        console.log('signOut!', result)
         this.$router.replace('/')
       }).catch(error => {
         alert(error)
@@ -45,7 +43,7 @@ export default {
 
 <style scoped>
 #signIn{
-  font-size: 12px;
+  font-size: 10px;
   text-align: right;
   position: fixed;
   top: 15px;
@@ -81,7 +79,7 @@ b, i {
   display: inline-block;
 }
 .box {
-   display: flex;
-   align-items:center;
+  display: flex;
+  align-items:center;
 }
 </style>

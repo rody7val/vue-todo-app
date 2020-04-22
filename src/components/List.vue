@@ -1,6 +1,6 @@
 <template>
   <div class='list'>
-    <h3>{{msg}}</h3>
+    <h3>Create</h3>
     <input type='text'
       placeholder='Nombre'
       v-model='person.name'
@@ -8,6 +8,7 @@
     <button @click='add()'>Agregar</button>
     <br>
     <br>
+    <h3>List</h3>
     <ul>
       <li v-for='(p, index) in persons' :key='index'>
         <div class='item truncate'>
@@ -15,7 +16,8 @@
             :to="{
               name: 'person',
               params: {
-                key: p['.key']
+                key: p['.key'],
+                uid: p.uid
               }
             }">{{p.name}}</router-link>
         </div>
@@ -38,7 +40,8 @@ export default {
     return {
       msg: 'List',
       person: {
-        name: ''
+        name: '',
+        uid: this.$user.uid
       }
     }
   },
@@ -58,37 +61,37 @@ export default {
 <style scoped>
 ul{
   width: 300px;
-  list-style-type: none;
-  margin: 0;
-  padding: 3px;
+  padding-left: 15px;
+  margin-top: 0px;
   font-family: monospace;
-  background-color: #eee;
 }
 .truncate {
-  width: 200px;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .item{
   text-align: left;
-  display: inline-block;
+  display: inline-box;
+  display: -webkit-inline-box;
   min-height: 22px;
   max-width: 250px;
-  font-size: 1rem;
+  font-size: 18px;
   background: white;
 }
 .remove{
-  background-color: #fff;
-  border: 1px solid coral;
-  color: coral;
-  width: 50px;
+  color: #fff;
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
   float: right;
-  display: inline-block;
+  display: block;
   cursor: pointer;
+  border-radius: 4px;
 }
 .remove:hover{
   color: #fff;
-  background-color: tomato;
+  background-color: #bd2130;
+  border-color: #b21f2d;
 }
 </style>

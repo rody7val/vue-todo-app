@@ -5,6 +5,8 @@ import firebase from 'firebase'
 import About from '@/components/About'
 import Home from '@/components/Home'
 import List from '@/components/List'
+import Users from '@/components/Users'
+import User from '@/components/User'
 import Person from '@/components/Person'
 
 Vue.use(Router)
@@ -31,9 +33,25 @@ const router = new Router({
       }
     },
     {
-      path: '/p/:key',
+      path: '/p/:key/:uid',
       name: 'person',
       component: Person
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: Users,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/u/:key',
+      name: 'user',
+      component: User,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
@@ -41,8 +59,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!firebase.auth().currentUser) {
-      alert('Tené quetá logueao loc...')
-      console.log('Tené quetá logueao loc...')
       next({
         path: '/',
         query: { redirect: to.fullPath }

@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 import firebase from 'firebase'
 import VueFirestore from 'vue-firestore'
+import moment from 'moment'
+import 'moment/locale/es'
 require('firebase/firestore')
 
 Vue.config.productionTip = false
@@ -22,9 +24,11 @@ const db = firebase.initializeApp({
 }).firestore()
 
 Vue.use(db)
+moment.locale('es')
 
 Vue.prototype.$firebase = firebase
 Vue.prototype.$db = db
+Vue.prototype.$moment = moment
 
 firebase.auth().onAuthStateChanged((user) => {
   Vue.prototype.$user = user
