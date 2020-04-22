@@ -30,11 +30,13 @@ Vue.prototype.$firebase = firebase
 Vue.prototype.$db = db
 Vue.prototype.$moment = moment
 
-firebase.auth().onAuthStateChanged((user) => {
-  Vue.prototype.$user = user
-  new Vue({
-    router,
-    components: { App },
-    template: '<App/>'
-  }).$mount('#app')
-})
+window.onload = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    Vue.prototype.$user = user
+    new Vue({
+      router,
+      components: { App },
+      template: '<App/>'
+    }).$mount('#app')
+  })
+}

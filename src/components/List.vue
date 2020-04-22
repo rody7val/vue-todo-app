@@ -10,6 +10,9 @@
     <br>
     <h3>List</h3>
     <ul>
+      <div v-if="!persons.length">
+        <img class="load" src="https://lh3.googleusercontent.com/proxy/LsIr87ZtL1wySWpMnZ8VN6Xs0k1O4yl6QwStBxqDjkzD4QBVB_Apb7cW5aoA5wO8Qyy_xIf0zLNg3tD_huEBLg">
+      </div>
       <li v-for='(p, index) in persons' :key='index'>
         <div class='item truncate'>
           <router-link
@@ -59,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
+.load{
+  width: 60px;
+}
 ul{
   width: 300px;
   padding-left: 15px;
