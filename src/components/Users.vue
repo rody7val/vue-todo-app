@@ -2,9 +2,7 @@
   <div class='users'>
     <h3>{{msg}}</h3>
     <ul>
-      <div v-if="!users.length">
-        <img class="load" src="https://lh3.googleusercontent.com/proxy/LsIr87ZtL1wySWpMnZ8VN6Xs0k1O4yl6QwStBxqDjkzD4QBVB_Apb7cW5aoA5wO8Qyy_xIf0zLNg3tD_huEBLg">
-      </div>
+      <div v-if="!users.length">cargando...</div>
       <li v-for='(user, index) in users' :key='index'>
         <router-link
           :to="{
@@ -36,7 +34,4 @@ export default {
 </script>
 
 <style scoped>
-.load{
-  width: 60px;
-}
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div class='userId'>
     <br>
-    <div v-if="!user.name">
-      <img class="load" src="https://lh3.googleusercontent.com/proxy/LsIr87ZtL1wySWpMnZ8VN6Xs0k1O4yl6QwStBxqDjkzD4QBVB_Apb7cW5aoA5wO8Qyy_xIf0zLNg3tD_huEBLg">
-    </div>
+    <div v-if="!user.name">cargando...</div>
     <div v-else>
       <div class="box">
         <div>
@@ -51,8 +49,5 @@ img{
 .box {
   display: flex;
   align-items:center;
-}
-.load{
-  width: 60px;
 }
 </style>
