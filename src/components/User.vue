@@ -14,7 +14,8 @@
       </div>
       <small><p><b>Activo? </b> {{user.active}}</p>
       <p><b>Administrador? </b>{{user.admin}}</p>
-      <p>Creado {{$moment(user.created).calendar()}}</p></small>
+      <hr>
+      <p>Creado {{ $moment(user.created).format('[el] ll') }}</p></small>
     </div>
   </div>
 </template>

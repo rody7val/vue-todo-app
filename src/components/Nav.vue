@@ -35,10 +35,6 @@ export default {
   display: flex;
   align-items:center;
 }
-#nav {
-  font-size: 16px;
-  font-weight: 300
-}
 #nav a::after {
   content: " | ";
   color: #000;

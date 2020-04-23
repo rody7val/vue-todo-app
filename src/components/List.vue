@@ -62,9 +62,6 @@ export default {
 <style scoped>
 ul{
   width: 300px;
-  padding-left: 15px;
-  margin-top: 0px;
-  font-family: monospace;
 }
 .truncate {
   width: 250px;
@@ -73,13 +70,8 @@ ul{
   text-overflow: ellipsis;
 }
 .item{
-  text-align: left;
-  display: inline-box;
-  display: -webkit-inline-box;
-  min-height: 22px;
+  display: inline-block;
   max-width: 250px;
-  font-size: 18px;
-  background: white;
 }
 .remove{
   color: #fff;

@@ -3,8 +3,9 @@
     <div v-if="!person.name && !user.name">cargando...</div>
     <div v-else>
       <h3>{{ person.name }}</h3>
+      <hr>
       <small>
-        <p class="box">creado por <span><img :src="user[0].img"></span> <router-link :to="{
+        <p class="box">creado {{ $moment(person.created).format('[el] ll') }} por <span><img :src="user[0].img"></span> <router-link :to="{
           name: 'user',
           params: {
             key: user[0]['.key']

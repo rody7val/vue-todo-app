@@ -48,6 +48,7 @@ export default {
   position: fixed;
   top: 15px;
   right: 15px;
+  background-color: #fff;
 }
 #signIn img {
   display: inline-block;
