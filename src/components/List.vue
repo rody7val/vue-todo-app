@@ -40,6 +40,7 @@ export default {
   data () {
     return {
       msg: 'List',
+      persons: [],
       person: {
         name: '',
         uid: this.$user.uid
