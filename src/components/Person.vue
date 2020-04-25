@@ -1,36 +1,57 @@
 <template>
-  <div class='listId'>
-    <div v-if='!person.name && !user.name'>cargando...</div>
-    <div v-else>
-      <div v-if='edit' style='margin-top: 1em; margin-bottom: 1em;'>
-        <input type='text'
-          placeholder='Editar'
-          v-model='personEdit.name'
-          @keyup.enter='update(person)'/>
-          <div style="display: inline-block;">
-            <div v-if="load">
-              cargando...
-            </div>
-            <div v-else>
-              <button @click='update(person)'>Guardar</button>
-            </div>
-          </div>
-      </div>
-      <div v-else>
-        <h3>{{ person.name }}</h3>
-      </div>
-      <button @click='handleEdit'>{{edit ? 'Cancelar' : 'Editar'}}</button>
-      <hr>
-      <small>
-        <p class='box'>Creado {{ $moment(person.created).format('[el] ll') }} por <span><img :src='user[0].img'></span> <router-link :to="{
+  <b-row>
+    <b-col md="8" sm="12">
+  <b-spinner v-if="!persons.length" variant="primary" label="Spinning"></b-spinner>
+  <b-card v-else>
+    <template v-slot:header >
+      <b-avatar class="mr-2"
+        variant="dark"
+        size="2rem"
+        :src='user[0].img'></b-avatar>
+      <router-link :to="{
           name: 'user',
           params: {
             key: user[0]['.key']
           }
-        }">{{ user[0].name }}</router-link></p>
+        }">{{ user[0].name }}</router-link>
+      <b-badge class="float-right m-2"
+        :variant="edit ? 'dark' : 'light'"
+        @click='handleEdit'>{{edit ? 'Cancelar' : 'Editar'}}</b-badge>
+    </template>
+
+    <div v-if='!person.name && !user.name'>
+
+    </div>
+    <div v-else>
+      <div v-if='edit'>
+        <b-form @submit.prevent="update(person)" inline>
+          <b-input
+            id="name"
+            v-model="personEdit.name"
+            type="text"
+            class="mb-2 mr-sm-2 mb-sm-0"
+            placeholder='Editar'
+          ></b-input>
+            <div v-if="load">
+              <b-spinner variant="primary" label="Spinning"></b-spinner>
+            </div>
+            <div v-else>
+              <b-button type="submit" variant="primary">Guardar</b-button>
+            </div>
+        </b-form>
+      </div>
+      <div v-else>
+        <h3 class="display-4">{{ person.name }}</h3>
+      </div>
+      <hr>
+      <small>
+        <time> {{ $moment(person.created).calendar() }} </time>
       </small>
     </div>
-  </div>
+  </b-card>
+  <a class="back btn btn-link" @click="$router.go(-1)">Volver</a>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
@@ -59,20 +80,35 @@ export default {
   data () {
     return {
       load: false,
-      edit: false,
+      edit: false
     }
   }
 }
 </script>
 
 <style scoped>
+time{
+  text-transform: uppercase;
+  color: #8e8e8e;
+}
+h3{
+  font-size: 40px;
+}
+.card {
+  margin-top: 45px
+}
+.card-header a {
+  color: #212529;
+  text-decoration: none;
+}
+.card-header .badge{
+  cursor: pointer
+}
 .box {
   display: flex;
   align-items:center;
 }
-span img{
-  width: 20px;
-  margin: 0 5px;
-  border-radius: 50%;
+a.back{
+  color: #007bff;
 }
 </style>

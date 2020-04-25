@@ -1,30 +1,28 @@
 <template>
   <div id='app'>
-    <Auth/>
-    <Nav/>
-    <router-view/>
+    <Menu/>
+    <b-container>
+      <router-view/>
+    </b-container>
   </div>
 </template>
 
 <script>
-import Nav from '@/components/Nav'
-import Auth from '@/components/Auth'
+import Menu from '@/components/Menu'
 
 export default {
   components: {
-    Nav,
-    Auth
+    Menu
   },
   name: 'App'
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 15px;
+.truncate {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

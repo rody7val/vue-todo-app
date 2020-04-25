@@ -1,17 +1,18 @@
 <template>
-  <div class='auth'>
-    <div id='signIn' v-if='$user'>
-      <img :src='$user.photoURL' :alt='$user.displayName'>
-      <b>{{$user.displayName}}</b>
-      <i>{{$user.email}}</i>
-      <button @click="signOut">Salir</button>
-    </div>
-    <div v-else>
-      <div id='btn-login' class='box' @click='signIn'>
-        <img id='img-login' src='@/assets/auth.png'>
-        <div id='text-login'>ACCEDER</div>
-      </div>
-    </div>
+  <div>
+    <b-nav-item-dropdown right v-if='$user'>
+      <template v-slot:button-content>
+        <b-avatar class="mr-1"
+        variant="dark"
+        size="2rem"
+        :src='$user.photoURL'></b-avatar>
+      </template>
+      <b-dropdown-item @click='signOut'>Salir</b-dropdown-item>
+    </b-nav-item-dropdown>
+
+    <b-button variant='outline-primary' v-if='!$user' @click='signIn'>
+      <b-icon-people-circle></b-icon-people-circle> ACCEDER
+    </b-button>
   </div>
 </template>
 
@@ -42,42 +43,9 @@ export default {
 </script>
 
 <style scoped>
-#signIn{
-  font-size: 10px;
-  text-align: right;
-  position: fixed;
-  top: 15px;
-  right: 15px;
+button, button:hover{
   background-color: #fff;
-}
-#signIn img {
-  display: inline-block;
-  width: 40px;
-  border-radius: 50%;
-}
-b, i {
-  display: block;
-}
-#btn-login{
-  cursor: pointer;
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  padding: 0.5em;
-  border: 1px solid #065fd4;
-  border-radius: 2px ;
-}
-#img-login{
-  width: 24px;
-  display: inline-block;
-}
-#text-login{
-  padding-left: 10px;
-  letter-spacing: 0.01px;
-  font-weight: 600;
-  font-size: 14px;
-  color: #065fd4;
-  display: inline-block;
+  color: #007bff;
 }
 .box {
   display: flex;

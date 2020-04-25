@@ -5,13 +5,17 @@ import firebase from 'firebase'
 import VueFirestore from 'vue-firestore'
 import moment from 'moment'
 import 'moment/locale/es'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 require('firebase/firestore')
+moment.locale('es')
 
 Vue.config.productionTip = false
-
-// let app = null
-
 Vue.use(VueFirestore)
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 const db = firebase.initializeApp({
   apiKey: 'AIzaSyBHWTQ4TEph5O533Y_0HS2rlrepV6bSmm4',
@@ -24,7 +28,6 @@ const db = firebase.initializeApp({
 }).firestore()
 
 Vue.use(db)
-moment.locale('es')
 
 Vue.prototype.$firebase = firebase
 Vue.prototype.$db = db

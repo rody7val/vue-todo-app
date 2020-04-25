@@ -1,19 +1,26 @@
 <template>
-  <div class='list'>
-    <h3>Create</h3>
-    <input type='text'
-      placeholder='Nombre'
-      v-model='person.name'
-      @keyup.enter='add()'/>
-    <button @click='add()'>Agregar</button>
-    <br>
-    <br>
-    <h3>List</h3>
-    <ul>
-      <div v-if="!persons.length">cargando...</div>
-      <li v-for='(p, index) in persons' :key='index'>
-        <div class='item truncate'>
+  <b-row>
+    <b-col md="8" sm="12">
+      <h3 class="display-4">Crear</h3>
+      <b-form @submit.prevent="add()" inline>
+        <b-input
+          id="name"
+          v-model="person.name"
+          type="text"
+          class="mb-2 mr-sm-2 mb-sm-0"
+          placeholder='Nombre'
+        ></b-input>
+        <b-button type="submit" variant="primary">Agregar</b-button>
+      </b-form>
+
+      <h3 class="display-4">Personas</h3>
+      <b-spinner v-if="!persons.length" variant="primary" label="Spinning"></b-spinner>
+      <b-list-group v-else>
+        <b-list-group-item v-for='(p, index) in persons'
+          class="d-flex justify-content-between align-items-center"
+          :key='index'>
           <router-link
+            class="truncate"
             :to="{
               name: 'person',
               params: {
@@ -21,11 +28,11 @@
                 uid: p.uid
               }
             }">{{p.name}}</router-link>
-        </div>
-        <button class='remove' @click='remove(p)'>x</button>
-      </li>
-    </ul>
-  </div>
+          <b-badge variant="danger" @click='remove(p)'>borrar</b-badge>
+        </b-list-group-item>
+      </b-list-group>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
@@ -40,7 +47,6 @@ export default {
   data () {
     return {
       msg: 'List',
-      persons: [],
       person: {
         name: '',
         uid: this.$user.uid
@@ -61,31 +67,14 @@ export default {
 </script>
 
 <style scoped>
-ul{
-  width: 300px;
+a{
+  text-decoration: none;
 }
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+h3{
+  margin-top: 30px;
+  font-size: 45px;
 }
-.item{
-  display: inline-block;
-  max-width: 250px;
-}
-.remove{
-  color: #fff;
-  background-color: #dc3545;
-  border: 1px solid #dc3545;
-  float: right;
-  display: block;
+span.badge{
   cursor: pointer;
-  border-radius: 4px;
-}
-.remove:hover{
-  color: #fff;
-  background-color: #bd2130;
-  border-color: #b21f2d;
 }
 </style>

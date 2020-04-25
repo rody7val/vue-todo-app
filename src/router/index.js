@@ -6,7 +6,6 @@ import About from '@/components/About'
 import Home from '@/components/Home'
 import List from '@/components/List'
 import Users from '@/components/Users'
-import User from '@/components/User'
 import Person from '@/components/Person'
 
 Vue.use(Router)
@@ -41,14 +40,6 @@ const router = new Router({
       path: '/users',
       name: 'users',
       component: Users,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/u/:key',
-      name: 'user',
-      component: User,
       meta: {
         requiresAuth: true
       }
